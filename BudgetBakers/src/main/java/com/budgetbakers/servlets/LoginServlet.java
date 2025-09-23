@@ -13,8 +13,13 @@ import com.budgetbakers.service.UserService;
 import com.budgetbakers.utils.MailUtil;
 import jakarta.mail.MessagingException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+	private static final Logger logger = LogManager.getLogger(LoginServlet.class);
     private static final long serialVersionUID = 1L;
     private UserService userService = new UserService();
     
@@ -23,12 +28,14 @@ public class LoginServlet extends HttpServlet {
         //String password = request.getParameter("password");
         HttpSession session = request.getSession();
         //System.out.println(email + password);
+        logger.debug("doGet called with email={}", email);
         
         try {
             if (userService.isNewUser(email)) {
                 // New user flow
                 String tempPassword = userService.registerUser(email);
                 session.setAttribute("email", email);
+                logger.info("New user registered: {} with tempPassword={}", email, tempPassword);
                 // In a real app, you would send this tempPassword via email
                 //System.out.println("Generated temp password for " + email + ": " + tempPassword);
 //                String subject = "Your Temporary Password";
@@ -43,10 +50,12 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("tempPassword.jsp?email=" + email);
             } else {
                 // Existing user flow
+            	logger.info("Existing user login attempt: {}", email);
                request.getRequestDispatcher("password.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error("Database error for email={}", email, e);
             request.setAttribute("errorMessage", "An error occurred with the database.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
