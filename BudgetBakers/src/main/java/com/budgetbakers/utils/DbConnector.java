@@ -6,6 +6,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ *  DbConnector page.
+ */
+
 public class DbConnector {
 
 	private static DbConnector instance;

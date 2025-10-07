@@ -11,6 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import com.budgetbakers.service.UserService;
 
+/**
+ *  SetPasswordServlet page.
+ */
+
 @WebServlet("/SetPasswordServlet")
 public class SetPasswordServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -34,7 +38,8 @@ public class SetPasswordServlet extends HttpServlet {
             userService.setPassword(email, newPassword);
             session.invalidate(); // Invalidate session to force re-login
             //response.sendRedirect("login.jsp?message=Password+set+successfully.+Please+log+in+again.");
-            response.sendRedirect("home.jsp");
+            //response.sendRedirect("records.jsp");
+            response.sendRedirect("ViewRecordsServlet");
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "An error occurred with the database.");

@@ -4,6 +4,10 @@ import jakarta.mail.*;
 import jakarta.mail.internet.*;
 import java.util.Properties;
 
+/**
+ *  MailUtil page.
+ */
+
 public class MailUtil {
 
     // Hardcoded credentials (for testing only!)

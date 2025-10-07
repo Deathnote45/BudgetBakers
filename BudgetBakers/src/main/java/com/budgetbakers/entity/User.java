@@ -2,6 +2,10 @@ package com.budgetbakers.entity;
 
 import java.sql.Timestamp;
 
+/**
+  users page.
+ */
+
 public class User {
     private int id;
     private String email;
@@ -9,7 +13,10 @@ public class User {
     private String tempPassword;
     private boolean isTemp;
     private Timestamp createdAt;
-
+   
+    /**
+     * users entity page.
+     */
     // Constructors
     public User() {}
 

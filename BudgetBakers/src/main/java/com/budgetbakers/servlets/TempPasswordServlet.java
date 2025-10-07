@@ -11,6 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import com.budgetbakers.service.UserService;
 
+/**
+ *  TempPasswordServlet page.
+ */
+
+
 @WebServlet("/TempPasswordServlet")
 public class TempPasswordServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;

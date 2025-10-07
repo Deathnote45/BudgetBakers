@@ -17,6 +17,10 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
+/**
+ *  GoogleSignInServlet page.
+ */
+
 @WebServlet("/GoogleSignInServlet")
 public class GoogleSignInServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -65,8 +69,8 @@ public class GoogleSignInServlet extends HttpServlet {
                 session.setAttribute("name", name);
 
                 // Redirect to home page
-                response.sendRedirect("home.jsp");
-
+                //response.sendRedirect("records.jsp");
+                response.sendRedirect("ViewRecordsServlet");
             } else {
                 response.getWriter().println("Invalid ID token.");
             }

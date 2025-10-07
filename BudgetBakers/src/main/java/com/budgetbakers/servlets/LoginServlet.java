@@ -16,6 +16,10 @@ import jakarta.mail.MessagingException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ *  LoginServlet page.
+ */
+
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -35,6 +39,9 @@ public class LoginServlet extends HttpServlet {
                 // New user flow
                 String tempPassword = userService.registerUser(email);
                 session.setAttribute("email", email);
+                //session.setAttribute("userEmail", email.trim());
+
+                
                 logger.info("New user registered: {} with tempPassword={}", email, tempPassword);
                 // In a real app, you would send this tempPassword via email
                 //System.out.println("Generated temp password for " + email + ": " + tempPassword);
@@ -52,6 +59,7 @@ public class LoginServlet extends HttpServlet {
                 // Existing user flow
             	logger.info("Existing user login attempt: {}", email);
                request.getRequestDispatcher("password.jsp").forward(request, response);
+               //response.sendRedirect("records.jsp");
             }
         } catch (SQLException e) {
             e.printStackTrace();

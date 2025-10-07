@@ -49,8 +49,8 @@ public class PermanentPassword extends HttpServlet {
 			if(isCorrect){
 				//System.out.println(password);
 				 request.getSession().setAttribute("email", email);
-				response.sendRedirect("home.jsp");
-				
+				//response.sendRedirect("records.jsp");
+				 response.sendRedirect("ViewRecordsServlet");
 				System.out.println("login successful");
 			}else {
 				
