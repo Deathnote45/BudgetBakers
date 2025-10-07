@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.budgetbakers.entity"},{"l":"com.budgetbakers.service"},{"l":"com.budgetbakers.servlets"},{"l":"com.budgetbakers.utils"}];updateSearchResults();
